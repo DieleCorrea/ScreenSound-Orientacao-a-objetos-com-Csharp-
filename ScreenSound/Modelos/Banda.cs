@@ -11,7 +11,14 @@ internal class Banda
     }
 
     public string Nome { get; }
-    public double Media => notas.Average(a => a.Nota);
+    public double Media
+    {
+        get 
+        {
+            if (notas.Count == 0) return 0;//se a contagem das notas receber 0 retorno a media 0
+            else return notas.Average(a => a.Nota);// senão, eiu faço o calculo da média
+        }
+    }
     public List<Album> Albuns => albuns;
 
     public void AdicionarAlbum(Album album) 
