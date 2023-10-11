@@ -1,8 +1,9 @@
 ﻿namespace ScreenSound.Modelos;
-class Banda
+internal class Banda
 {
     private List<Album> albuns = new List<Album>();
     private List<int> notas = new List<int>();
+    //vamos encapsular as notas, representando o conceito nota dentro de uma classe
 
     public Banda(string nome)
     {
