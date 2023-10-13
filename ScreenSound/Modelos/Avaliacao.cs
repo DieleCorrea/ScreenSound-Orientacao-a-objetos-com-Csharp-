@@ -14,7 +14,7 @@ internal class Avaliacao
     public int Nota { get; }
 
     //criei um metodo do tipo Avaliacao chamado Parse com argumento string que chama texto 
-    public Avaliacao Converte(string texto)
+    public static Avaliacao Converte(string texto)
     {
         int nota = int.Parse(texto);
         return new Avaliacao(nota);
