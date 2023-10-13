@@ -3,16 +3,21 @@
 internal class Album
 {
     private List<Musica> musicas = new List<Musica>();
-
+    //coonstrutor 
     public Album(string nome)
     {
         Nome = nome;
+        ContadorDeObjetos++;
     }
-
+   
     public string Nome { get; }
     public int DuracaoTotal => musicas.Sum(m => m.Duracao);
     public List<Musica> Musicas => musicas;
+    public static int ContadorDeObjetos = 0;//campo estatico
 
+    
+   
+    //metodos
     public void AdicionarMusica(Musica musica)
     {
         musicas.Add(musica);
