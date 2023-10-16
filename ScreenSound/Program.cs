@@ -1,5 +1,5 @@
-﻿using ScreenSound.Modelos;
-using ScreenSound.Modelos.Menus;
+﻿using ScreenSound.Menus;
+using ScreenSound.Modelos;
 
 Banda ira = new Banda("Ira");
 ira.AdicionarNota(new Avaliacao(10));
