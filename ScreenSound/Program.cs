@@ -72,7 +72,8 @@ void ExibirOpcoesDoMenu()
 void RegistrarAlbum()
 {
     Console.Clear();
-    ExibirTituloDaOpcao("Registro de álbuns");
+    MenuExibirDetalhes mostrar = new MenuExibirDetalhes();
+    mostrar.ExibirTituloDaOpcao("Registro de álbuns");
     Console.Write("Digite a banda cujo álbum deseja registrar: ");
     string nomeDaBanda = Console.ReadLine()!;
     if (bandasRegistradas.ContainsKey(nomeDaBanda))
@@ -102,7 +103,8 @@ void RegistrarAlbum()
 void RegistrarBanda()
 {
     Console.Clear();
-    ExibirTituloDaOpcao("Registro das bandas");
+    MenuExibirDetalhes mostrar = new MenuExibirDetalhes();
+    mostrar.ExibirTituloDaOpcao("Registro das bandas");
     Console.Write("Digite o nome da banda que deseja registrar: ");
     string nomeDaBanda = Console.ReadLine()!;
     Banda banda = new Banda(nomeDaBanda);
@@ -116,7 +118,8 @@ void RegistrarBanda()
 void MostrarBandasRegistradas()
 {
     Console.Clear();
-    ExibirTituloDaOpcao("Exibindo todas as bandas registradas na nossa aplicação");
+    MenuExibirDetalhes mostrar = new MenuExibirDetalhes();
+    mostrar.ExibirTituloDaOpcao("Exibindo todas as bandas registradas na nossa aplicação");
 
     foreach (string banda in bandasRegistradas.Keys)
     {
@@ -135,7 +138,8 @@ void MostrarBandasRegistradas()
 void AvaliarUmaBanda()
 {
     Console.Clear();
-    ExibirTituloDaOpcao("Avaliar banda");
+    MenuExibirDetalhes mostrar = new MenuExibirDetalhes();
+    mostrar.ExibirTituloDaOpcao("Avaliar banda");
     Console.Write("Digite o nome da banda que deseja avaliar: ");
     string nomeDaBanda = Console.ReadLine()!;
     if (bandasRegistradas.ContainsKey(nomeDaBanda))
