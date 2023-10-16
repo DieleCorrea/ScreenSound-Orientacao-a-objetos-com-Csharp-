@@ -1,4 +1,5 @@
 ﻿using ScreenSound.Modelos;
+using ScreenSound.Modelos.Menus;
 
 Banda ira = new Banda("Ira");
 ira.AdicionarNota(new Avaliacao(10));
@@ -55,7 +56,8 @@ void ExibirOpcoesDoMenu()
             AvaliarUmaBanda();
             break;
         case 5:
-            ExibirDetalhes();
+            MenuExibirDetalhes menu = new MenuExibirDetalhes();
+            menu.Executar(bandasRegistradas);
             break;
         case -1:
             Console.WriteLine("Tchau tchau :)");
