@@ -9,9 +9,9 @@ ira.AdicionarNota(new Avaliacao(6));
 
 Banda beatles = new("The beatles");
 
-Dictionary<string, Banda> bandasRegistradas = new ();
+Dictionary<string, Banda> bandasRegistradas = new();
 bandasRegistradas.Add(ira.Nome, ira);
-bandasRegistradas.Add(beatles.Nome,beatles );
+bandasRegistradas.Add(beatles.Nome, beatles);
 
 void ExibirLogo()
 {
@@ -53,8 +53,9 @@ void ExibirOpcoesDoMenu()
             MostrarBandasRegistradas();
             break;
         case 4:
-
-            AvaliarUmaBanda();
+            MenuAvaliarBanda menuAvaliarBanda = new MenuAvaliarBanda(); 
+            menuAvaliarBanda.Executar(bandasRegistradas);
+            ExibirOpcoesDoMenu();
             break;
         case 5:
             MenuExibirDetalhes menu = new MenuExibirDetalhes();
@@ -95,7 +96,7 @@ void RegistrarAlbum()
         Console.WriteLine("Digite uma tecla para voltar ao menu principal");
         Console.ReadKey();
         Console.Clear();
-        
+
     }
     ExibirOpcoesDoMenu();
 }
@@ -131,7 +132,7 @@ void MostrarBandasRegistradas()
 
 }
 
- void ExibirTituloDaOpcao(string titulo)
+void ExibirTituloDaOpcao(string titulo)
 {
     int quantidadeDeLetras = titulo.Length;
     string asteriscos = string.Empty.PadLeft(quantidadeDeLetras, '*');
