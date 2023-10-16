@@ -53,6 +53,7 @@ void ExibirOpcoesDoMenu()
             MostrarBandasRegistradas();
             break;
         case 4:
+
             AvaliarUmaBanda();
             break;
         case 5:
@@ -72,8 +73,7 @@ void ExibirOpcoesDoMenu()
 void RegistrarAlbum()
 {
     Console.Clear();
-    MenuExibirDetalhes mostrar = new MenuExibirDetalhes();
-    mostrar.ExibirTituloDaOpcao("Registro de álbuns");
+    ExibirTituloDaOpcao("Registro de álbuns");
     Console.Write("Digite a banda cujo álbum deseja registrar: ");
     string nomeDaBanda = Console.ReadLine()!;
     if (bandasRegistradas.ContainsKey(nomeDaBanda))
@@ -103,8 +103,7 @@ void RegistrarAlbum()
 void RegistrarBanda()
 {
     Console.Clear();
-    MenuExibirDetalhes mostrar = new MenuExibirDetalhes();
-    mostrar.ExibirTituloDaOpcao("Registro das bandas");
+    ExibirTituloDaOpcao("Registro das bandas");
     Console.Write("Digite o nome da banda que deseja registrar: ");
     string nomeDaBanda = Console.ReadLine()!;
     Banda banda = new Banda(nomeDaBanda);
@@ -118,8 +117,7 @@ void RegistrarBanda()
 void MostrarBandasRegistradas()
 {
     Console.Clear();
-    MenuExibirDetalhes mostrar = new MenuExibirDetalhes();
-    mostrar.ExibirTituloDaOpcao("Exibindo todas as bandas registradas na nossa aplicação");
+    ExibirTituloDaOpcao("Exibindo todas as bandas registradas na nossa aplicação");
 
     foreach (string banda in bandasRegistradas.Keys)
     {
@@ -133,36 +131,13 @@ void MostrarBandasRegistradas()
 
 }
 
-
-
-void AvaliarUmaBanda()
+ void ExibirTituloDaOpcao(string titulo)
 {
-    Console.Clear();
-    MenuExibirDetalhes mostrar = new MenuExibirDetalhes();
-    mostrar.ExibirTituloDaOpcao("Avaliar banda");
-    Console.Write("Digite o nome da banda que deseja avaliar: ");
-    string nomeDaBanda = Console.ReadLine()!;
-    if (bandasRegistradas.ContainsKey(nomeDaBanda))
-    {
-        Banda banda = bandasRegistradas[nomeDaBanda];
-        Console.Write($"Qual a nota que a banda {nomeDaBanda} merece: ");
-        Avaliacao nota = Avaliacao.Converte(Console.ReadLine()!);
-        banda.AdicionarNota((nota));
-        Console.WriteLine($"\nA nota {nota} foi registrada com sucesso para a banda {nomeDaBanda}");
-        Thread.Sleep(2000);
-        Console.Clear();
-        ExibirOpcoesDoMenu();
-    }
-    else
-    {
-        Console.WriteLine($"\nA banda {nomeDaBanda} não foi encontrada!");
-        Console.WriteLine("Digite uma tecla para voltar ao menu principal");
-        Console.ReadKey();
-        Console.Clear();
-        ExibirOpcoesDoMenu();
-    }
-
-
+    int quantidadeDeLetras = titulo.Length;
+    string asteriscos = string.Empty.PadLeft(quantidadeDeLetras, '*');
+    Console.WriteLine(asteriscos);
+    Console.WriteLine(titulo);
+    Console.WriteLine(asteriscos + "\n");
 }
 
 
