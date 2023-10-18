@@ -27,7 +27,6 @@ void ExibirLogo()
 ");
     Console.WriteLine("Boas vindas ao Screen Sound 2.0!");
 }
-
 void ExibirOpcoesDoMenu()
 {
     ExibirLogo();
@@ -49,10 +48,12 @@ void ExibirOpcoesDoMenu()
             menuRegistrarBandas.Executar(bandasRegistradas);
             break;
         case 2:
-            RegistrarAlbum();
+            MenuRegistrarAlbuns menuRegistrarAlbuns = new MenuRegistrarAlbuns();
+            menuRegistrarAlbuns.Executar(bandasRegistradas);
             break;
         case 3:
-            MostrarBandasRegistradas();
+            MenuMostrarBandas menuMostrarBandas = new MenuMostrarBandas();
+            menuMostrarBandas.Executar(bandasRegistradas);
             break;
         case 4:
             MenuAvaliarBanda menuAvaliarBanda = new MenuAvaliarBanda(); 
@@ -72,34 +73,6 @@ void ExibirOpcoesDoMenu()
             break;
     }
 }
-
-void RegistrarAlbum()
-{
-   
-    ExibirOpcoesDoMenu();
-}
-
-
-
-void MostrarBandasRegistradas()
-{
-    Console.Clear();
-    //ExibirTituloDaOpcao("Exibindo todas as bandas registradas na nossa aplicação");
-
-    foreach (string banda in bandasRegistradas.Keys)
-    {
-        Console.WriteLine($"Banda: {banda}");
-    }
-
-    Console.WriteLine("\nDigite uma tecla para voltar ao menu principal");
-    Console.ReadKey();
-    Console.Clear();
-    ExibirOpcoesDoMenu();
-
-}
-
-
-
 
 ExibirOpcoesDoMenu();
 
