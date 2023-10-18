@@ -3,7 +3,7 @@ internal class Banda
 {
     private List<Album> albuns = new List<Album>();
     private List<Avaliacao> notas = new List<Avaliacao>();
-    //vamos encapsular as notas, representando o conceito nota dentro de uma classe
+    
 
     public Banda(string nome)
     {
