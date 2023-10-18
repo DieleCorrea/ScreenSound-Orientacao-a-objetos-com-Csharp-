@@ -13,6 +13,13 @@ Dictionary<string, Banda> bandasRegistradas = new();
 bandasRegistradas.Add(ira.Nome, ira);
 bandasRegistradas.Add(beatles.Nome, beatles);
 
+Dictionary<int,Menu> opcoes = new();
+opcoes.Add(1, new MenuRegistrarBandas());
+opcoes.Add(2, new MenuRegistrarAlbuns());
+opcoes.Add(3, new MenuMostrarBandas());
+opcoes.Add(4, new MenuAvaliarBanda());
+opcoes.Add(5, new MenuExibirDetalhes());
+opcoes.Add(-1, new MenuSair());
 
 void ExibirLogo()
 {
@@ -41,40 +48,21 @@ void ExibirOpcoesDoMenu()
     string opcaoEscolhida = Console.ReadLine()!;
     int opcaoEscolhidaNumerica = int.Parse(opcaoEscolhida);
 
-    switch (opcaoEscolhidaNumerica)
+    if (opcoes.ContainsKey(opcaoEscolhidaNumerica)) //se no meu dicionario tiver a chave da ~opcaoEscolhidaNumerica~ 
     {
-        case 1:
-            MenuRegistrarBandas menuRegistrarBandas = new MenuRegistrarBandas();
-            menuRegistrarBandas.Executar(bandasRegistradas);
-            break;
-        case 2:
-            MenuRegistrarAlbuns menuRegistrarAlbuns = new MenuRegistrarAlbuns();
-            menuRegistrarAlbuns.Executar(bandasRegistradas);
-            break;
-        case 3:
-            MenuMostrarBandas menuMostrarBandas = new MenuMostrarBandas();
-            menuMostrarBandas.Executar(bandasRegistradas);
-            break;
-        case 4:
-            MenuAvaliarBanda menuAvaliarBanda = new MenuAvaliarBanda(); 
-            menuAvaliarBanda.Executar(bandasRegistradas);
-            ExibirOpcoesDoMenu();
-            break;
-        case 5:
-            MenuExibirDetalhes menu = new MenuExibirDetalhes();
-            menu.Executar(bandasRegistradas);
-            ExibirOpcoesDoMenu();
-            break;
-        case -1:
-            Console.WriteLine("Tchau tchau :)");
-            break;
-        default:
-            Console.WriteLine("Opção inválida");
-            break;
+        Menu menuASerExibido = opcoes[opcaoEscolhidaNumerica]; //~menuExibirOpcoes~ vai receber o dictionary e a ~opcaoEscolhidaNumerica~ será a chave para deficir qual dictionay sera chamado
+        menuASerExibido.Executar(bandasRegistradas);
+        if (opcaoEscolhidaNumerica > 0) ExibirOpcoesDoMenu(); 
+    }
+    else
+    { 
+        Console.WriteLine("Opção invalida"); 
     }
 }
-
 ExibirOpcoesDoMenu();
+
+
+
 
 
 
