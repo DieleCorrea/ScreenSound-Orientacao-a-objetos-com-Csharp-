@@ -6,8 +6,8 @@
 internal class Avaliacao
 {
     //criar construtor
-    public Avaliacao(int nota) 
-    { 
+    public Avaliacao(int nota)
+    {
         if (nota <= 0) nota = 0;
         if (nota >= 10) nota = 10;
 
@@ -21,7 +21,8 @@ internal class Avaliacao
     {
         int nota = int.Parse(texto);
         return new Avaliacao(nota);
-        
+
     }
+}
 
 

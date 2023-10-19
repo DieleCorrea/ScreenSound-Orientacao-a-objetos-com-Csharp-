@@ -22,29 +22,30 @@ internal class MenuAvaliarAlbum : Menu
         string nomeDaBanda = Console.ReadLine()!;
         if (bandasRegistradas.ContainsKey(nomeDaBanda))//bandasRegistradas tem a chave (nomeDaBanda)?, se sim eu: 
         {
-            Banda banda = bandasRegistradas[nomeDaBanda];//crio um obj banda do tipo Banda e recebo a lista bandasRegistradas com a chave [nomeDaBanda]
+            Banda banda = bandasRegistradas[nomeDaBanda];//pego a chave digitada [nomeDaBanda] que esta na lista bandasRegistradas e defico que é DO TIPO Banda quando passo para a variavel banda. 
             Console.WriteLine("Agora digite o título do album que deseja avaliar");
             string tituloAlbum = Console.ReadLine()!;
-            if (banda.Albuns.Count > 0)
+            //se a banda *** com albuns *** ter alguma propriedade como o Nome igual ao tituloAlbum eu: 
+            if (banda.Albuns.Any(a => a.Nome.Equals(tituloAlbum)))
             {
+                //pego o primeiro Nome que for igual o recebido pelo ~tituloAlbum~ e envio para nomeAlbum do tipo Album
+                Album nomeAlbum = banda.Albuns.First(a => a.Nome.Equals(tituloAlbum));
+
                 Console.Write($"Qual a nota que o album {tituloAlbum} merece: ");
                 Avaliacao nota = Avaliacao.Converte(Console.ReadLine()!);
-               // Album album = ???;
-               // Album.AdicionarNota((nota));
-                Console.WriteLine($"\nA nota {nota} foi registrada com sucesso para o album {tituloAlbum}");
+                nomeAlbum.AdicionarNota(nota);
+                Console.WriteLine($"\nA nota {nota.Nota} foi registrada com sucesso para o album {tituloAlbum}");
                 Thread.Sleep(2000);
                 Console.Clear();
             }
-
-
-
-
-
-
-            
-        }
-        else
-        {
+            else
+            {
+                Console.WriteLine($"\nO album {tituloAlbum} não foi encontrada!");
+                Console.WriteLine("Digite uma tecla para voltar ao menu principal");
+                Console.ReadKey();
+                Console.Clear();
+            }
+        }else{
             Console.WriteLine($"\nA banda {nomeDaBanda} não foi encontrada!");
             Console.WriteLine("Digite uma tecla para voltar ao menu principal");
             Console.ReadKey();
