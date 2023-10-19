@@ -1,5 +1,5 @@
 ﻿namespace ScreenSound.Modelos;
-internal class Banda
+internal class Banda : IAvaliavel
 {
     private List<Album> albuns = new List<Album>();
     private List<Avaliacao> notas = new List<Avaliacao>();
@@ -13,7 +13,7 @@ internal class Banda
     public string Nome { get; }
     public double Media
     {
-        get 
+        get
         {
             if (notas.Count == 0) return 0;//se a contagem das notas receber 0 retorno a media 0
             else return notas.Average(a => a.Nota);// senão, eiu faço o calculo da média

@@ -34,3 +34,8 @@ namespace ScreenSound.Menus
 
     }
 }
+/*
+ Aproveitar um comportamento em comum: INTERFACE 
+
+ Garantir que vai entregar 
+ */
