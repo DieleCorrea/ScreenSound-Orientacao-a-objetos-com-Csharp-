@@ -3,7 +3,7 @@ internal class Banda : IAvaliavel
 {
     private List<Album> albuns = new List<Album>();
     private List<Avaliacao> notas = new List<Avaliacao>();
-    
+    public IEnumerable<Album> Albuns => albuns;
 
     public Banda(string nome)
     {
@@ -19,7 +19,7 @@ internal class Banda : IAvaliavel
             else return notas.Average(a => a.Nota);// senão, eiu faço o calculo da média
         }
     }
-    public List<Album> Albuns => albuns;
+    
 
     public void AdicionarAlbum(Album album) 
     { 
