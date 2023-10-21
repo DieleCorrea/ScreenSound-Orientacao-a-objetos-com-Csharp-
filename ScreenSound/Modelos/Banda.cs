@@ -2,8 +2,16 @@
 internal class Banda : IAvaliavel
 {
     private List<Album> albuns = new List<Album>();
-    private List<Avaliacao> notas = new List<Avaliacao>();
     public IEnumerable<Album> Albuns => albuns;
+    //Isso é uma propriedade do tipo IEnumerable,
+    //usando essa interface eu to protegendo que mudem
+    //minha coleção fora desta classe, fora daqui fica somente para leitura e previne problemas futuros,
+    //se no futuro eu quiser usar outra estrutura de dados sem ser uma list,
+    //muda aqui e não afeta o codigo externo. 
+
+
+
+    private List<Avaliacao> notas = new List<Avaliacao>();
 
     public Banda(string nome)
     {
