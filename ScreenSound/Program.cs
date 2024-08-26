@@ -1,5 +1,29 @@
-﻿using ScreenSound.Menus;
+﻿using ScreenSound.Banco;
+using ScreenSound.Menus;
 using ScreenSound.Modelos;
+
+try
+{
+    var context = new ScreenSoundContext();
+    var artistaDal = new ArtistaDAL(context);
+    //var novoArtista = new Artista("Gilberto Gil", "aaaaaaaaaaabbbbbb") { Id = 1002 };
+    //ArtistaDal.Atualizar(novoArtista);
+    //ArtistaDal.Deletar(novoArtista);
+
+   var recuperado = artistaDal.RecuperarPeloNome("Foo Fighters");
+    Console.WriteLine(recuperado);
+
+    //var listaArtistas = artistaDal.Listar();
+    //foreach (var artist in listaArtistas)
+    //{
+    //    Console.WriteLine(artist);
+    //}
+}
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+return;
 
 Banda ira = new Banda("Ira");
 ira.AdicionarNota(new Avaliacao(10));
@@ -13,7 +37,7 @@ Dictionary<string, Banda> bandasRegistradas = new();
 bandasRegistradas.Add(ira.Nome, ira);
 bandasRegistradas.Add(beatles.Nome, beatles);
 
-Dictionary<int,Menu> opcoes = new();
+Dictionary<int, Menu> opcoes = new();
 opcoes.Add(1, new MenuRegistrarBandas());
 opcoes.Add(2, new MenuRegistrarAlbuns());
 opcoes.Add(3, new MenuMostrarBandas());
@@ -53,11 +77,11 @@ void ExibirOpcoesDoMenu()
     {
         Menu menuASerExibido = opcoes[opcaoEscolhidaNumerica]; //~menuExibirOpcoes~ vai receber o dictionary e a ~opcaoEscolhidaNumerica~ será a chave para deficir qual dictionay sera chamado
         menuASerExibido.Executar(bandasRegistradas);
-        if (opcaoEscolhidaNumerica > 0) ExibirOpcoesDoMenu(); 
+        if (opcaoEscolhidaNumerica > 0) ExibirOpcoesDoMenu();
     }
     else
-    { 
-        Console.WriteLine("Opção invalida"); 
+    {
+        Console.WriteLine("Opção invalida");
     }
 }
 ExibirOpcoesDoMenu();
